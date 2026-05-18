@@ -1,0 +1,7 @@
+{
+  "name": "chimera-dev-explorer",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "LLM-driven web application explorer for the Chimera pipeline"
+}

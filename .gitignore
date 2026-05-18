@@ -1,0 +1,5 @@
+node_modules/
+.chimera/
+.o11y/
+*.log
+.DS_Store

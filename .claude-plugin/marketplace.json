@@ -1,0 +1,11 @@
+{
+  "metadata": {
+    "pluginRoot": "."
+  },
+  "plugins": [
+    {
+      "name": "chimera-dev",
+      "skills": ["./skills/app-explorer"]
+    }
+  ]
+}
