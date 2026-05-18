@@ -1,0 +1,20 @@
+RootWebArea "Dashboard - My App"
+  banner
+    navigation "Main"
+      link "Dashboard" @0-1 [href=/dashboard]
+      link "Projects" @0-2 [href=/projects]
+      link "Settings" @0-3 [href=/settings]
+      link "Team" @0-4 [href=/team]
+  main
+    heading "Welcome back" @0-5
+    button "Create Project" @0-6
+    button "Import" @0-7
+    region "Recent Projects"
+      link "Project Alpha" @0-8 [href=/projects/1]
+      link "Project Beta" @0-9 [href=/projects/2]
+    form "Search"
+      textbox "Search projects..." @0-10 [name=query]
+      button "Search" @0-11
+    button "Delete Account" @0-12
+    link "View All" @0-13 [href=/projects]
+    link "https://external.com/docs" @0-14 [href=https://external.com/docs]
