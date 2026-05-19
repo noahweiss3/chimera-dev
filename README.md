@@ -41,7 +41,7 @@ browse open https://app.example.com
 | **functionality-mapper** | Available | Map screens to types, data dependencies, actions, user flows, and state transitions |
 | **model-inferrer** | Available | Infer entities, relationships, and a Drizzle PostgreSQL schema from OpenAPI + forms |
 | **app-reconstructor** | Available | Scaffold a React 19 + Vite + Express + Drizzle monorepo from all prior outputs |
-| clone-auditor | Planned | Compare clone against original, identify gaps |
+| **clone-auditor** | Available | Audit the reconstructed clone against the spec; flag stubbed routes/pages, schema gaps, and runtime drift |
 
 ## Requirements
 
