@@ -1,0 +1,28 @@
+{
+  "screens": [
+    {
+      "id": "001",
+      "name": "Projects",
+      "url": "/projects",
+      "type": "list",
+      "section": "projects",
+      "auth": true,
+      "data_dependencies": [{ "endpoint": "GET /api/projects", "purpose": "list items", "on_load": true }],
+      "actions": [],
+      "forms": ["001-create-project"],
+      "destructive_actions_skipped": []
+    },
+    {
+      "id": "002",
+      "name": "Project Alpha",
+      "url": "/projects/123",
+      "type": "detail",
+      "section": "projects",
+      "auth": true,
+      "data_dependencies": [{ "endpoint": "GET /api/projects/{id}", "purpose": "load resource", "on_load": true }],
+      "actions": [],
+      "forms": [],
+      "destructive_actions_skipped": []
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Test API", "version": "0.1.0" },
+  "servers": [{ "url": "https://app.example.com" }],
+  "paths": {
+    "/api/projects": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "projects": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": { "type": "string" },
+                          "name": { "type": "string" },
+                          "description": { "type": "string" },
+                          "owner_id": { "type": "string" },
+                          "created_at": { "type": "string", "format": "date-time" }
+                        },
+                        "required": ["id", "name", "owner_id", "created_at"]
+                      }
+                    }
+                  },
+                  "required": ["projects"]
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "description": { "type": "string" }
+                },
+                "required": ["name"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": { "type": "string" },
+                    "name": { "type": "string" },
+                    "description": { "type": "string" },
+                    "owner_id": { "type": "string" },
+                    "created_at": { "type": "string", "format": "date-time" }
+                  },
+                  "required": ["id", "name", "owner_id", "created_at"]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/projects/{id}": {
+      "get": {
+        "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": { "type": "string" },
+                    "name": { "type": "string" },
+                    "description": { "type": "string" },
+                    "owner_id": { "type": "string" },
+                    "created_at": { "type": "string", "format": "date-time" },
+                    "owner": {
+                      "type": "object",
+                      "properties": {
+                        "id": { "type": "string" },
+                        "email": { "type": "string", "format": "email" },
+                        "name": { "type": "string" }
+                      },
+                      "required": ["id", "email"]
+                    }
+                  },
+                  "required": ["id", "name", "owner_id", "created_at"]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/me": {
+      "get": {
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": { "type": "string" },
+                    "email": { "type": "string", "format": "email" },
+                    "name": { "type": "string" },
+                    "created_at": { "type": "string", "format": "date-time" }
+                  },
+                  "required": ["id", "email"]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

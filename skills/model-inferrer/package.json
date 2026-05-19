@@ -1,0 +1,7 @@
+{
+  "name": "chimera-dev-model-inferrer",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Infer Drizzle ORM schema and entity model from captured API + behavioral data"
+}

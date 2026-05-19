@@ -1,0 +1,11 @@
+{
+  "id": "001-create-project",
+  "page_ref": "001",
+  "fields": [
+    { "name": "name", "type": "textbox", "placeholder": "Project name", "ref": "@0-30" },
+    { "name": "description", "type": "textbox", "placeholder": "Optional description", "ref": "@0-31" }
+  ],
+  "submit_button": null,
+  "method": null,
+  "action_url": null
+}
