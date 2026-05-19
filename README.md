@@ -40,7 +40,7 @@ browse open https://app.example.com
 | **api-mapper** | Available | Extract OpenAPI 3.1 spec, endpoint map, auth scheme, and typed fetch client from captured traffic |
 | **functionality-mapper** | Available | Map screens to types, data dependencies, actions, user flows, and state transitions |
 | **model-inferrer** | Available | Infer entities, relationships, and a Drizzle PostgreSQL schema from OpenAPI + forms |
-| app-reconstructor | Planned | Scaffold a working clone from all prior outputs |
+| **app-reconstructor** | Available | Scaffold a React 19 + Vite + Express + Drizzle monorepo from all prior outputs |
 | clone-auditor | Planned | Compare clone against original, identify gaps |
 
 ## Requirements

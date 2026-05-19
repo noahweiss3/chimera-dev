@@ -9,7 +9,8 @@
         "./skills/app-explorer",
         "./skills/api-mapper",
         "./skills/functionality-mapper",
-        "./skills/model-inferrer"
+        "./skills/model-inferrer",
+        "./skills/app-reconstructor"
       ]
     }
   ]
