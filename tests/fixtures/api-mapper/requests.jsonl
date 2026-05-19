@@ -1,0 +1,8 @@
+{"requestId":"r-1","request":{"url":"https://app.example.com/","method":"GET","headers":{"Cookie":"session=abc123"}},"timestamp":1000.0,"type":"Document"}
+{"requestId":"r-2","request":{"url":"https://fonts.gstatic.com/s/inter/v12/font.woff2","method":"GET","headers":{}},"timestamp":1000.1,"type":"Font"}
+{"requestId":"r-3","request":{"url":"https://www.google-analytics.com/g/collect?v=2","method":"POST","headers":{}},"timestamp":1000.2,"type":"XHR"}
+{"requestId":"r-4","request":{"url":"https://app.example.com/static/app.js","method":"GET","headers":{}},"timestamp":1000.3,"type":"Script"}
+{"requestId":"r-5","request":{"url":"https://app.example.com/api/projects","method":"GET","headers":{"Cookie":"session=abc123","Accept":"application/json"}},"timestamp":1001.0,"type":"XHR"}
+{"requestId":"r-6","request":{"url":"https://app.example.com/api/projects/123","method":"GET","headers":{"Cookie":"session=abc123","Accept":"application/json"}},"timestamp":1002.0,"type":"XHR"}
+{"requestId":"r-7","request":{"url":"https://app.example.com/api/projects/456","method":"GET","headers":{"Cookie":"session=abc123","Accept":"application/json"}},"timestamp":1002.5,"type":"XHR"}
+{"requestId":"r-8","request":{"url":"https://app.example.com/api/users/me","method":"GET","headers":{"Cookie":"session=abc123","Accept":"application/json"}},"timestamp":1003.0,"type":"XHR"}

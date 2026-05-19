@@ -1,0 +1,16 @@
+{
+  "form_ref": "001-create-project",
+  "page_ref": "001",
+  "timestamp": "2026-05-18T20:30:00Z",
+  "values_used": {"name": "Gamma", "description": "Third project"},
+  "request": {
+    "method": "POST",
+    "url": "https://app.example.com/api/projects",
+    "headers": {"Cookie": "session=abc123", "Content-Type": "application/json"},
+    "body": {"name": "Gamma", "description": "Third project"}
+  },
+  "response": {
+    "status": 201,
+    "body": {"id": 789, "name": "Gamma", "description": "Third project", "created_at": "2026-05-18T20:30:01Z"}
+  }
+}

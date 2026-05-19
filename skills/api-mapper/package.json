@@ -1,0 +1,7 @@
+{
+  "name": "chimera-dev-api-mapper",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Extract OpenAPI 3.1 spec from captured network traffic"
+}

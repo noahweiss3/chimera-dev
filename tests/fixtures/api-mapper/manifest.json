@@ -1,0 +1,9 @@
+{
+  "version": "1.0.0",
+  "tool": "chimera-dev",
+  "skill": "app-explorer",
+  "timestamp_start": "2026-05-18T20:00:00Z",
+  "timestamp_end": "2026-05-18T20:35:00Z",
+  "target_url": "https://app.example.com",
+  "mode": "explore"
+}

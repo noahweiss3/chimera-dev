@@ -1,0 +1,8 @@
+{"requestId":"r-1","response":{"url":"https://app.example.com/","status":200,"headers":{"content-type":"text/html"},"mimeType":"text/html"},"timestamp":1000.05}
+{"requestId":"r-2","response":{"url":"https://fonts.gstatic.com/s/inter/v12/font.woff2","status":200,"headers":{"content-type":"font/woff2"},"mimeType":"font/woff2"},"timestamp":1000.15}
+{"requestId":"r-3","response":{"url":"https://www.google-analytics.com/g/collect?v=2","status":204,"headers":{},"mimeType":"text/plain"},"timestamp":1000.25}
+{"requestId":"r-4","response":{"url":"https://app.example.com/static/app.js","status":200,"headers":{"content-type":"application/javascript"},"mimeType":"application/javascript"},"timestamp":1000.35}
+{"requestId":"r-5","response":{"url":"https://app.example.com/api/projects","status":200,"headers":{"content-type":"application/json"},"mimeType":"application/json"},"timestamp":1001.1}
+{"requestId":"r-6","response":{"url":"https://app.example.com/api/projects/123","status":200,"headers":{"content-type":"application/json"},"mimeType":"application/json"},"timestamp":1002.1}
+{"requestId":"r-7","response":{"url":"https://app.example.com/api/projects/456","status":200,"headers":{"content-type":"application/json"},"mimeType":"application/json"},"timestamp":1002.6}
+{"requestId":"r-8","response":{"url":"https://app.example.com/api/users/me","status":200,"headers":{"content-type":"application/json"},"mimeType":"application/json"},"timestamp":1003.1}
