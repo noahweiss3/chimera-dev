@@ -5,7 +5,7 @@
   "plugins": [
     {
       "name": "chimera-dev",
-      "skills": ["./skills/app-explorer"]
+      "skills": ["./skills/app-explorer", "./skills/api-mapper"]
     }
   ]
 }
