@@ -1,0 +1,7 @@
+{
+  "endpoints": [
+    { "method": "GET", "path_template": "/api/projects", "pages": ["001"], "samples": 1 },
+    { "method": "POST", "path_template": "/api/projects", "pages": ["001"], "samples": 1 },
+    { "method": "GET", "path_template": "/api/users/me", "pages": ["001"], "samples": 1 }
+  ]
+}

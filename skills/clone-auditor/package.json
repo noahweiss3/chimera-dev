@@ -1,0 +1,7 @@
+{
+  "name": "chimera-dev-clone-auditor",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Audit a reconstructed clone against the original captured Chimera outputs"
+}

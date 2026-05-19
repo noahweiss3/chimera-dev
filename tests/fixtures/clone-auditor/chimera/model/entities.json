@@ -1,0 +1,6 @@
+{
+  "entities": [
+    { "name": "Project", "table": "projects", "fields": [], "relationships": [], "sources": [] },
+    { "name": "User", "table": "users", "fields": [], "relationships": [], "sources": [] }
+  ]
+}

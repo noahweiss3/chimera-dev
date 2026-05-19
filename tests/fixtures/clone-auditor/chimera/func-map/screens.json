@@ -1,0 +1,6 @@
+{
+  "screens": [
+    { "id": "001", "name": "Projects", "url": "/projects", "type": "list", "section": "projects", "auth": true, "data_dependencies": [], "actions": [], "forms": [], "destructive_actions_skipped": [] },
+    { "id": "002", "name": "Project Alpha", "url": "/projects/123", "type": "detail", "section": "projects", "auth": true, "data_dependencies": [], "actions": [], "forms": [], "destructive_actions_skipped": [] }
+  ]
+}
