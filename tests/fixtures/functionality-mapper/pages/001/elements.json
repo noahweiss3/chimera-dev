@@ -1,0 +1,17 @@
+{
+  "links": [
+    { "text": "Project Alpha", "href": "/projects/123", "ref": "@0-10" },
+    { "text": "Project Beta", "href": "/projects/456", "ref": "@0-11" },
+    { "text": "Project Gamma", "href": "/projects/789", "ref": "@0-12" }
+  ],
+  "buttons": [
+    { "text": "Create Project", "ref": "@0-20", "classification": "safe" },
+    { "text": "Delete All", "ref": "@0-21", "classification": "destructive" }
+  ],
+  "forms": [
+    {
+      "name": "Search",
+      "fields": [{ "name": "query", "type": "textbox", "placeholder": "Search projects", "ref": "@0-30" }]
+    }
+  ]
+}

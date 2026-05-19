@@ -1,0 +1,8 @@
+{
+  "id": "001-search",
+  "page_ref": "001",
+  "fields": [{ "name": "query", "type": "textbox", "placeholder": "Search projects", "ref": "@0-30" }],
+  "submit_button": null,
+  "method": null,
+  "action_url": null
+}

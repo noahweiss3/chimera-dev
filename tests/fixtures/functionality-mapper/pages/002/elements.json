@@ -1,0 +1,10 @@
+{
+  "links": [
+    { "text": "Back to Projects", "href": "/projects", "ref": "@0-1" }
+  ],
+  "buttons": [
+    { "text": "Edit", "ref": "@0-10", "classification": "safe" },
+    { "text": "Delete Project", "ref": "@0-11", "classification": "destructive" }
+  ],
+  "forms": []
+}

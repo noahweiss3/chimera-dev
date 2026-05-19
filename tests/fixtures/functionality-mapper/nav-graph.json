@@ -1,0 +1,11 @@
+{
+  "nodes": [
+    { "id": "000", "url": "https://app.example.com/", "title": "Welcome", "auth": false },
+    { "id": "001", "url": "https://app.example.com/projects", "title": "Projects", "auth": true },
+    { "id": "002", "url": "https://app.example.com/projects/123", "title": "Project Alpha", "auth": true }
+  ],
+  "edges": [
+    { "from": "000", "to": "001", "action": "navigate", "label": "log in" },
+    { "from": "001", "to": "002", "action": "click link", "label": "Project Alpha" }
+  ]
+}

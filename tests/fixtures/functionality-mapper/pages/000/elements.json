@@ -1,0 +1,8 @@
+{
+  "links": [
+    { "text": "Log in", "href": "/login", "ref": "@0-1" },
+    { "text": "Sign up", "href": "/signup", "ref": "@0-2" }
+  ],
+  "buttons": [],
+  "forms": []
+}

@@ -1,0 +1,14 @@
+{
+  "form_ref": null,
+  "page_ref": "001",
+  "trigger_ref": "@0-20",
+  "trigger_text": "Create Project",
+  "timestamp": "2026-05-18T20:12:00Z",
+  "request": {
+    "method": "POST",
+    "url": "https://app.example.com/api/projects",
+    "headers": {},
+    "body": {"name": "Gamma"}
+  },
+  "response": { "status": 201, "body": {"id": 789, "name": "Gamma"} }
+}
