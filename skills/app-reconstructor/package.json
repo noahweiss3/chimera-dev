@@ -1,0 +1,7 @@
+{
+  "name": "chimera-dev-app-reconstructor",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Scaffold a runnable full-stack clone from captured Chimera outputs"
+}

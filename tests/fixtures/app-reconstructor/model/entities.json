@@ -1,0 +1,32 @@
+{
+  "entities": [
+    {
+      "name": "Project",
+      "table": "projects",
+      "fields": [
+        { "name": "id", "type": "uuid", "primary_key": true, "required": true },
+        { "name": "name", "type": "text", "required": true },
+        { "name": "description", "type": "text", "required": false },
+        { "name": "owner_id", "type": "uuid", "foreign_key": "users.id", "required": true },
+        { "name": "created_at", "type": "timestamp", "required": false }
+      ],
+      "relationships": [
+        { "type": "belongs_to", "entity": "User", "foreign_key": "owner_id" }
+      ],
+      "sources": ["GET /api/projects (response 200)"]
+    },
+    {
+      "name": "User",
+      "table": "users",
+      "fields": [
+        { "name": "id", "type": "uuid", "primary_key": true, "required": true },
+        { "name": "email", "type": "text", "required": true },
+        { "name": "name", "type": "text", "required": false }
+      ],
+      "relationships": [
+        { "type": "has_many", "entity": "Project", "foreign_key": "owner_id" }
+      ],
+      "sources": ["GET /api/users/me (response 200)"]
+    }
+  ]
+}
