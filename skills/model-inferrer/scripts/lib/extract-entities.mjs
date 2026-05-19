@@ -200,7 +200,35 @@ export function extractEntities({ openapi }) {
     }
   }
 
-  return [...candidates.values()];
+  return mergeStructurallyEquivalent([...candidates.values()]);
+}
+
+function mergeStructurallyEquivalent(entities) {
+  const sorted = [...entities].sort((a, b) => b.fields.length - a.fields.length);
+  const removed = new Set();
+  for (let i = 0; i < sorted.length; i++) {
+    const target = sorted[i];
+    if (removed.has(target.name)) continue;
+    const targetFieldNames = new Set(target.fields.map((f) => f.name));
+    for (let j = i + 1; j < sorted.length; j++) {
+      const candidate = sorted[j];
+      if (removed.has(candidate.name)) continue;
+      if (candidate.fields.length < 2) continue;
+      const allFieldsContained = candidate.fields.every((f) => targetFieldNames.has(f.name));
+      const bothHaveId =
+        candidate.fields.some((f) => f.name === "id") &&
+        target.fields.some((f) => f.name === "id");
+      if (allFieldsContained && bothHaveId) {
+        for (const src of candidate.sources) {
+          if (!target.sources.includes(src)) target.sources.push(src);
+        }
+        // Carry forward any nested objects too
+        target.nestedObjects.push(...(candidate.nestedObjects ?? []));
+        removed.add(candidate.name);
+      }
+    }
+  }
+  return sorted.filter((e) => !removed.has(e.name));
 }
 
 function pluralizeTable(name) {

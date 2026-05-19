@@ -39,7 +39,7 @@ browse open https://app.example.com
 | **app-explorer** | Available | Systematically explore a web app, capture structure + API traffic |
 | **api-mapper** | Available | Extract OpenAPI 3.1 spec, endpoint map, auth scheme, and typed fetch client from captured traffic |
 | **functionality-mapper** | Available | Map screens to types, data dependencies, actions, user flows, and state transitions |
-| model-inferrer | Planned | Infer database schema from API spec + behavioral map |
+| **model-inferrer** | Available | Infer entities, relationships, and a Drizzle PostgreSQL schema from OpenAPI + forms |
 | app-reconstructor | Planned | Scaffold a working clone from all prior outputs |
 | clone-auditor | Planned | Compare clone against original, identify gaps |
 
