@@ -44,17 +44,29 @@ function isSessionCookieName(name) {
 export function detectAuth(exchanges) {
   let jwtCount = 0;
   let opaqueBearerCount = 0;
+  let schemeWord = "Bearer";
   const cookieNameCounts = new Map();
   let apiKeyHeader = null;
 
   for (const ex of exchanges) {
     const headers = ex.request_headers ?? {};
     const auth = headers.authorization;
-    if (auth && auth.toLowerCase().startsWith("bearer ")) {
-      const token = auth.slice(7).trim();
-      if (isJwt(token)) jwtCount++;
-      else opaqueBearerCount++;
-      continue;
+    if (auth) {
+      // Standard `Bearer` and the `Token` prefix (used by RealWorld, DRF,
+      // legacy GitHub) are both token-in-Authorization-header schemes.
+      const lower = auth.toLowerCase();
+      const prefix = lower.startsWith("bearer ")
+        ? "Bearer"
+        : lower.startsWith("token ")
+          ? "Token"
+          : null;
+      if (prefix) {
+        const token = auth.slice(prefix.length + 1).trim();
+        if (isJwt(token)) jwtCount++;
+        else opaqueBearerCount++;
+        schemeWord = prefix;
+        continue;
+      }
     }
 
     const cookieHeader = headers.cookie;
@@ -78,6 +90,7 @@ export function detectAuth(exchanges) {
     return {
       type: "bearer",
       header: "Authorization",
+      scheme: schemeWord,
       token_pattern: jwtCount >= opaqueBearerCount ? "jwt" : "opaque",
     };
   }

@@ -67,7 +67,8 @@ async function request(method, path, params, options = {}) {
 function authInjection(auth) {
   if (!auth) return "";
   if (auth.type === "bearer") {
-    return `const token = options.token ?? env.CHIMERA_TOKEN; if (token) headers.Authorization = \`Bearer \${token}\`;`;
+    const scheme = auth.scheme ?? "Bearer";
+    return `const token = options.token ?? env.CHIMERA_TOKEN; if (token) headers.Authorization = \`${scheme} \${token}\`;`;
   }
   if (auth.type === "api-key") {
     return `const apiKey = options.apiKey ?? env.CHIMERA_API_KEY; if (apiKey) headers[${JSON.stringify(auth.header)}] = apiKey;`;

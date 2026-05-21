@@ -107,14 +107,24 @@ function collectResponseSchemas(openapi) {
   return out;
 }
 
-function unwrap(schema, path) {
-  // If schema is { properties: { <collection>: { type: array, items: object } } }, return items
+function unwrap(schema) {
+  // Unwrap response/request envelopes to the entity they carry. Handles:
+  //   { articles: [ {...} ], articlesCount: N }  → article object (array payload)
+  //   { article: {...} } / { user: {...} }       → inner object (object envelope)
+  // The array-payload case allows sibling scalar props (e.g. count fields).
   if (schema?.type === "object" && schema.properties) {
     const props = Object.entries(schema.properties);
+    const arrayProp = props.find(
+      ([, c]) =>
+        c?.type === "array" && c.items?.type === "object" && c.items.properties
+    );
+    if (arrayProp) {
+      return { schema: arrayProp[1].items, hintName: arrayProp[0] };
+    }
     if (props.length === 1) {
       const [key, child] = props[0];
-      if (child?.type === "array" && child.items?.type === "object") {
-        return { schema: child.items, hintName: key };
+      if (child?.type === "object" && child.properties) {
+        return { schema: child, hintName: key };
       }
     }
   }
