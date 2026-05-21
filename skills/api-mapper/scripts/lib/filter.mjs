@@ -57,14 +57,9 @@ const ANALYTICS_HOST_FRAGMENTS = [
   "newrelic",
 ];
 
-const ALLOWED_METHODS = new Set([
-  "GET",
-  "POST",
-  "PUT",
-  "PATCH",
-  "DELETE",
-  "OPTIONS",
-]);
+// OPTIONS is excluded: CORS preflight requests are browser-generated, not
+// real API endpoints.
+const ALLOWED_METHODS = new Set(["GET", "POST", "PUT", "PATCH", "DELETE"]);
 
 function getPathname(url) {
   try {
@@ -115,12 +110,23 @@ export function isNoise(exchange) {
   return false;
 }
 
+// Registrable domain ≈ last two labels of the host. Lets a frontend on
+// `demo.example.com` match its API on `api.example.com` — a common split.
+function registrableDomain(host) {
+  const parts = String(host).toLowerCase().split(".").filter(Boolean);
+  return parts.length <= 2 ? parts.join(".") : parts.slice(-2).join(".");
+}
+
 export function filterExchanges(exchanges, { appOrigins }) {
   const originSet = new Set(appOrigins.map((o) => o.replace(/\/$/, "")));
+  const appDomains = new Set(
+    appOrigins.map((o) => registrableDomain(getHost(o)))
+  );
   return exchanges.filter((ex) => {
     if (ex.source === "action") return true;
     if (isNoise(ex)) return false;
     const origin = getOrigin(ex.url);
-    return originSet.has(origin);
+    if (originSet.has(origin)) return true;
+    return appDomains.has(registrableDomain(getHost(ex.url)));
   });
 }
