@@ -26,9 +26,34 @@ function run(args) {
   }
 }
 
-const url = run(["get", "url"]);
-const title = run(["get", "title"]);
-const snapshotText = run(["snapshot"]);
+// `browse` >= 0.8 returns JSON from `get` and `snapshot`; older versions
+// returned bare strings. Accept either.
+function field(raw, key) {
+  try {
+    const v = JSON.parse(raw);
+    return typeof v === "object" && v ? v[key] ?? "" : raw;
+  } catch {
+    return raw;
+  }
+}
+
+const url = field(run(["get", "url"]), "url");
+const title = field(run(["get", "title"]), "title");
+const snapshotRaw = run(["snapshot"]);
+let snapshot;
+try {
+  snapshot = JSON.parse(snapshotRaw);
+  if (typeof snapshot !== "object" || !snapshot) snapshot = { tree: snapshotRaw };
+} catch {
+  snapshot = { tree: snapshotRaw };
+}
+const snapshotText = snapshot.tree ?? snapshotRaw;
+let origin = "";
+try {
+  origin = new URL(url).origin;
+} catch {
+  /* url may be empty */
+}
 
 const screenshotPath = resolve(pageDir, "screenshot.png");
 try {
@@ -57,7 +82,7 @@ writeFileSync(
   JSON.stringify({ raw: snapshotText }, null, 2) + "\n"
 );
 
-const parsed = parseSnapshot(snapshotText);
+const parsed = parseSnapshot(snapshot, origin);
 
 const classifiedButtons = parsed.buttons.map((b) => ({
   ...b,
