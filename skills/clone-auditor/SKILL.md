@@ -25,7 +25,7 @@ test -d chimera-clone && echo "clone ok" || echo "MISSING: run app-reconstructor
 ## Step 1 — Static gap analysis (always)
 
 ```bash
-node skills/clone-auditor/scripts/discover.mjs
+node <skill-dir>/scripts/discover.mjs   # <skill-dir>: the directory containing this SKILL.md
 ```
 
 Walks `.chimera/api-spec/endpoint-map.json`, `func-map/screens.json`, and `model/entities.json`. For each, checks whether the corresponding artifact in `chimera-clone/` is present and is no longer a `TODO(chimera)` stub.
@@ -43,7 +43,7 @@ If both servers are reachable:
 
 ```bash
 # Clone running (pnpm dev or similar)
-node skills/clone-auditor/scripts/diff-api.mjs \
+node <skill-dir>/scripts/diff-api.mjs \
   --original https://app.example.com \
   --clone http://localhost:4000 \
   --cookie "session=..."     # optional, for authed endpoints
@@ -62,7 +62,7 @@ Skip parameterized endpoints (`/api/projects/{id}`) — the auditor doesn't pick
 If you have screenshots of the clone:
 
 ```bash
-node skills/clone-auditor/scripts/diff-visual.mjs --clone-shots /path/to/clone/screenshots
+node <skill-dir>/scripts/diff-visual.mjs --clone-shots /path/to/clone/screenshots
 ```
 
 For each screen with a captured screenshot, generates an HTML page in `audit/visual-diffs/<Name>.html` showing the original and the clone side-by-side. Open in a browser to eyeball.

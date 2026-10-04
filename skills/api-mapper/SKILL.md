@@ -27,7 +27,7 @@ If `.chimera/` is missing, ask the user to run `app-explorer` first.
 ## Run the discovery
 
 ```bash
-node skills/api-mapper/scripts/discover.mjs
+node <skill-dir>/scripts/discover.mjs   # <skill-dir>: the directory containing this SKILL.md
 ```
 
 This loads `.chimera/traces/*.jsonl`, the body files, and `.chimera/actions/submitted/*.json`; filters noise (analytics, fonts, third-party); templatizes URLs (numeric IDs and UUIDs → `{id}`); infers JSON Schema from request and response bodies; detects the auth scheme; and writes everything to `.chimera/api-spec/`.

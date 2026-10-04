@@ -35,10 +35,10 @@ Ask the user which mode to use:
 Once the user has an active browse session and has chosen a mode:
 
 ```bash
-node skills/app-explorer/scripts/init.mjs --url <target-url> [--explore]
+node <skill-dir>/scripts/init.mjs --url <target-url> [--explore]   # <skill-dir>: the directory containing this SKILL.md
 ```
 
-This creates the `.chimera/` output directory and starts network trace capture.
+This creates the `.chimera/` output directory and runs `browse network on` so response bodies are captured. To also start browser-trace capture (the source of `traces/requests.jsonl`), add `--trace-scripts <browser-trace scripts dir> --cdp <cdp-target>`, and pass the same `--trace-scripts` to `finalize.mjs`.
 
 ## Exploration Protocol
 
@@ -61,7 +61,7 @@ Before the user authenticates:
 
 1. Run `capture-page.mjs` on the current (unauthenticated) page:
    ```bash
-   node skills/app-explorer/scripts/capture-page.mjs --id 000 --section public
+   node <skill-dir>/scripts/capture-page.mjs --id 000 --section public
    ```
 2. Read the summary output. Navigate to any visible public pages (pricing, about, docs) and capture each one.
 3. Find and capture the login/signup page. Note the form fields, OAuth providers, or magic link options.
@@ -76,7 +76,7 @@ After authentication:
 
 1. Capture the authenticated landing page:
    ```bash
-   node skills/app-explorer/scripts/capture-page.mjs --id <next-id> --section dashboard --auth
+   node <skill-dir>/scripts/capture-page.mjs --id <next-id> --section dashboard --auth
    ```
 2. Read the summary. Identify the primary navigation structure (sidebar, top nav, tabs).
 3. Present the site map to the user:
@@ -91,7 +91,7 @@ For each section in the queue:
 2. Wait for page load: `browse wait load`
 3. Capture the page:
    ```bash
-   node skills/app-explorer/scripts/capture-page.mjs --id <next-id> --section <name> --auth
+   node <skill-dir>/scripts/capture-page.mjs --id <next-id> --section <name> --auth
    ```
 4. Read the summary. If sub-navigation exists (tabs, sub-menus), add those URLs to the queue.
 5. Visit each sub-page within the section, capturing as you go.
@@ -146,7 +146,7 @@ After completing all sections:
 When exploration is complete (all sections visited, user confirms):
 
 ```bash
-node skills/app-explorer/scripts/finalize.mjs
+node <skill-dir>/scripts/finalize.mjs
 ```
 
 Report the final summary to the user:

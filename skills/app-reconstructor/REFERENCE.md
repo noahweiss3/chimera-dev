@@ -43,7 +43,7 @@ chimera-clone/
 
 ## Stack versions
 
-The scaffold pins to current major versions:
+The scaffold pins the versions below (defined in `scaffold.mjs`). They were set when the skill was written and trail current majors, Zod and TypeScript at least:
 
 | Package | Version |
 |---------|---------|

@@ -26,7 +26,7 @@ If openapi.json is missing, the skill fails fast. Tell the user to run `api-mapp
 ## Run the inference
 
 ```bash
-node skills/model-inferrer/scripts/discover.mjs
+node <skill-dir>/scripts/discover.mjs   # <skill-dir>: the directory containing this SKILL.md
 ```
 
 Walks every JSON response and request schema in the OpenAPI doc, extracts candidate entities, merges structurally equivalent ones (e.g., a nested `owner` object shaped like `User` is merged into `User`), infers relationships from `*_id` fields and URL nesting, then emits a Drizzle schema and a Mermaid ERD.
@@ -47,7 +47,7 @@ The script is best-effort. Common issues to look for and fix in `entities.json` 
 - **Polymorphic types**: response samples disagreed; `entities.json` may show duplicate entities with overlapping fields. Merge by hand and remove duplicates.
 - **Type mismatches**: a `string` field that should be a `uuid` because it's actually an ID. Adjust the `type` field.
 
-After hand edits, regenerate `schema.ts` only if needed. (Re-running `discover.mjs` overwrites everything — capture manual edits as a separate file or in git first.)
+`discover.mjs` has no schema-only mode and overwrites everything, so after hand-editing `entities.json`, make the matching change to `schema.ts` by hand, and commit manual edits before any re-run.
 
 ## Reporting to the user
 

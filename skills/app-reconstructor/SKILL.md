@@ -26,7 +26,7 @@ If any input is missing, name which skill to run first.
 ## Step 1 — Scaffold
 
 ```bash
-node skills/app-reconstructor/scripts/scaffold.mjs
+node <skill-dir>/scripts/scaffold.mjs   # <skill-dir>: the directory containing this SKILL.md
 ```
 
 This creates `chimera-clone/` with:
@@ -38,7 +38,7 @@ This creates `chimera-clone/` with:
 
 Every stub has a `TODO(chimera)` marker pointing to the source data in `.chimera/`.
 
-If `chimera-clone/` already exists, the script aborts. Pass `--force` only after the user confirms — it overwrites scaffold files but leaves your hand-written code alone where the file path is a route/page (those are TODO stubs).
+If `chimera-clone/` already exists, the script aborts. Pass `--force` only after the user confirms. It overwrites every scaffold file, including route and page stubs you have already filled in, so have the user commit the clone first.
 
 ## Step 2 — Generate API routes
 
@@ -114,7 +114,7 @@ If TypeScript complains, fix the offending file. Common issues:
 If the build succeeds, suggest the user start the dev server:
 
 ```bash
-cp .env.example .env  # or write one with DATABASE_URL
+echo 'DATABASE_URL=postgres://postgres:postgres@localhost:5432/postgres' > .env  # the scaffold writes no .env.example
 docker run -d -e POSTGRES_PASSWORD=postgres -p 5432:5432 postgres:16
 pnpm --filter @chimera-clone/api db:push
 pnpm dev

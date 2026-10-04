@@ -27,7 +27,7 @@ If `api-spec/` is missing, the skill still runs but produces a less complete map
 ## Run the mapping
 
 ```bash
-node skills/functionality-mapper/scripts/discover.mjs
+node <skill-dir>/scripts/discover.mjs   # <skill-dir>: the directory containing this SKILL.md
 ```
 
 This loads pages, elements, forms, actions, and the endpoint map; classifies each screen; attaches endpoint dependencies and action records; reconstructs linear user flows from the nav-graph; and emits transitions for every 2xx submitted action.
