@@ -114,7 +114,7 @@ If TypeScript complains, fix the offending file. Common issues:
 If the build succeeds, suggest the user start the dev server:
 
 ```bash
-echo 'DATABASE_URL=postgres://postgres:postgres@localhost:5432/postgres' > .env  # the scaffold writes no .env.example
+cp .env.example .env  # set DATABASE_URL
 docker run -d -e POSTGRES_PASSWORD=postgres -p 5432:5432 postgres:16
 pnpm --filter @chimera-clone/api db:push
 pnpm dev

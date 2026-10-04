@@ -34,6 +34,12 @@ describe("scaffold()", () => {
     }
   });
 
+  it("writes a .env.example with DATABASE_URL, as the generated README instructs", () => {
+    const envExample = resolve(outDir, ".env.example");
+    assert.ok(existsSync(envExample), "missing .env.example");
+    assert.match(readFileSync(envExample, "utf8"), /^DATABASE_URL=postgres:\/\/\S+$/m);
+  });
+
   it("creates apps/api directory with required files", () => {
     for (const f of [
       "apps/api/package.json",
